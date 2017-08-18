@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="trans">#0000</color>
+    <color name="action_text_color_normal">#dcdcdc</color>
+    <color name="action_text_color_pressed">#A9A9A9</color>
+    <color name="action_text_color_enabled">#C0C0C0</color>
+</resources>
