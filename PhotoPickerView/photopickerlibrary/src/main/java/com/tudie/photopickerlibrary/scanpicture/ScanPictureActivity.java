@@ -16,6 +16,7 @@ import com.tudie.photopickerlibrary.R;
 import com.tudie.photopickerlibrary.glide.GlideLoader;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @name：
@@ -46,9 +47,10 @@ public class ScanPictureActivity extends AppCompatActivity {
 
         setContentView(R.layout.act_scanpicture);
         paths = getIntent().getStringArrayListExtra(PhotoPickerActivity.PicList);
-        Log.i(">>>>>>>>>", ">>>>>>>>>" + paths);
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
-
+        if (Length(paths) < 1) {
+            return;
+        }
         viewPager.setAdapter(new SamplePagerAdapter());
     }
 
@@ -90,5 +92,13 @@ public class ScanPictureActivity extends AppCompatActivity {
             return view == object;
         }
 
+    }
+
+    private int Length(List<String> list) {
+        int length = 0;
+        if (list != null) {
+            length = list.size();
+        }
+        return length;
     }
 }

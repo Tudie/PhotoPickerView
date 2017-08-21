@@ -122,9 +122,9 @@ public class PhotoPickerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent data = new Intent();
-                data.putStringArrayListExtra(PicList, adapter.GetSelectPath());
+                data.putStringArrayListExtra(PhotoPickerActivity.PicList, adapter.GetSelectPath());
                 data.setClass(PhotoPickerActivity.this, ScanPictureActivity.class);
-                startActivityForResult(data, Extra_Scan);
+                startActivityForResult(data, PhotoPickerActivity.Extra_Scan);
             }
         });
         mFolderAdapter = new FolderAdapter(PhotoPickerActivity.this);

@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent();
                 intent.setClass(MainActivity.this,PhotoPickerActivity.class);
+                intent.putExtra(PhotoPickerActivity.Select_Count_CAMERA,false);//是否需要照相机 可以不传默认需要
+                intent.putExtra(PhotoPickerActivity.Select_Count_Type,5);//获取几张图片  可以不传默认一张
                 startActivityForResult(intent,127);
             }
         });
@@ -33,11 +35,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        ArrayList<String> paths = data.getStringArrayListExtra(PhotoPickerActivity.PicList);
         if (resultCode == 127) {
             switch (requestCode) {
                 // 选择照片
                 case 127:
+                    ArrayList<String> paths = data.getStringArrayListExtra(PhotoPickerActivity.PicList);
                     ((TextView)findViewById(R.id.textpaths)).setText("图片路径"+paths);
                     break;
 
