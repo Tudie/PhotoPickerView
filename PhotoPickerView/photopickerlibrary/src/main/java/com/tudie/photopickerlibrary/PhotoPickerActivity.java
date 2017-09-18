@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.ListPopupWindow;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -376,6 +377,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
         int cols = getNumColnums();
         int screenWidth = getResources().getDisplayMetrics().widthPixels;
         int columnSpace = getResources().getDimensionPixelOffset(R.dimen.space_size);
+        Log.i(">>>>>>>>columnSpace",">>>>>>>>columnSpace"+columnSpace);
         return (screenWidth - columnSpace * (cols - 1)) / cols;
     }
 

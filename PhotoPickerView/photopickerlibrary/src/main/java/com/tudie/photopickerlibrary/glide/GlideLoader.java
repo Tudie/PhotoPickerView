@@ -8,6 +8,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.Transformation;
 import com.bumptech.glide.load.engine.Resource;
 import com.bumptech.glide.request.RequestOptions;
+import com.tudie.photopickerlibrary.R;
+
 import java.security.MessageDigest;
 
 /**
@@ -25,6 +27,8 @@ public class GlideLoader {
     public static void GlideNormel(ImageView imageView, Object url) {
         if (!isNull(url)) {
             RequestOptions options = new RequestOptions()
+                    .error(R.mipmap.pic_noimages)
+                    .placeholder(R.mipmap.pic_noimages)
                     .skipMemoryCache(true);
             Glide.with(imageView.getContext()).load(url).thumbnail(0.1f).apply(options).into(imageView);
         }
@@ -33,6 +37,8 @@ public class GlideLoader {
     public static void GlideNormel(ImageView imageView, Object url, int width, int height) {
         if (!isNull(url)) {
             RequestOptions options = new RequestOptions()
+                    .error(R.mipmap.pic_noimages)
+                    .placeholder(R.mipmap.pic_noimages)
                     .skipMemoryCache(true)
                     .override(width, height);
             Glide.with(imageView.getContext()).load(url).thumbnail(0.1f).apply(options).into(imageView);
@@ -88,6 +94,8 @@ public class GlideLoader {
     public static void GlideCircle(ImageView imageView, Object url) {
         if (!isNull(url)) {
             RequestOptions options = new RequestOptions()
+                    .error(R.mipmap.pic_noimages)
+                    .placeholder(R.mipmap.pic_noimages)
                     .skipMemoryCache(true)
                     .dontAnimate()
                     .transform(new GlideCircleTransform(imageView.getContext()));
@@ -105,6 +113,8 @@ public class GlideLoader {
     public static void GlideRoundTransform(ImageView imageView, Object url) {
         if (!isNull(url)) {
             RequestOptions options = new RequestOptions()
+                    .error(R.mipmap.pic_noimages)
+                    .placeholder(R.mipmap.pic_noimages)
                     .skipMemoryCache(true)
                     .dontAnimate()
                     .transform(new GlideRoundTransform(imageView.getContext(), 6));
@@ -122,6 +132,8 @@ public class GlideLoader {
     public static void GlideRoundTransform(ImageView imageView, Object url, int circular) {
         if (!isNull(url)) {
             RequestOptions options = new RequestOptions()
+                    .error(R.mipmap.pic_noimages)
+                    .placeholder(R.mipmap.pic_noimages)
                     .skipMemoryCache(true)
                     .dontAnimate()
                     .transform(new GlideRoundTransform(imageView.getContext(), circular));

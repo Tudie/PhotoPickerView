@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.tudie.photopickerlibrary.glide.GlideLoader;
@@ -122,7 +123,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
                 holder.mask.setVisibility(View.GONE);
             }
             // 显示图片
-            GlideLoader.GlideNormel(holder.image, mImages.get(position).path, itemSize, itemSize);
+            GlideLoader.GlideNormel(holder.image, mImages.get(position).path);
 
             holder.flayout.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -248,6 +249,8 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
             super(view);
             image = (ImageView) view.findViewById(R.id.image);
             checkmark = (ImageView) view.findViewById(R.id.checkmark);
+            FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(itemSize, itemSize);
+            image.setLayoutParams(lp);
             mask = (View) view.findViewById(R.id.mask);
             flayout = (FrameLayout) view.findViewById(R.id.flayout);
         }

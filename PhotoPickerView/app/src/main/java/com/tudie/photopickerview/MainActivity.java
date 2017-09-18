@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent();
                 intent.setClass(MainActivity.this,PhotoPickerActivity.class);
-                intent.putExtra(PhotoPickerActivity.Select_Count_CAMERA,false);//是否需要照相机 可以不传默认需要
+                intent.putExtra(PhotoPickerActivity.Select_Count_CAMERA,true);//是否需要照相机 可以不传默认需要
                 intent.putExtra(PhotoPickerActivity.Select_Count_Type,5);//获取几张图片  可以不传默认一张
                 startActivityForResult(intent,127);
             }
