@@ -85,7 +85,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
                     holder.mask.setVisibility(View.GONE);
                 }
                 // 显示图片
-                GlideLoader.GlideNormel(holder.image, mImages.get(position - 1).path, itemSize, itemSize);
+                GlideLoader.GlideNormel(holder.image, mImages.get(position - 1).path);
 
                 holder.flayout.setOnClickListener(new View.OnClickListener() {
                     @Override
