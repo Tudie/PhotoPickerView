@@ -339,7 +339,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
     private void complete() {
         Intent data = new Intent();
         data.putStringArrayListExtra(PicList, resultList);
-        setResult(Extra_Code, data);
+        setResult(RESULT_OK, data);
         finish();
     }
 

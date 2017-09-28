@@ -69,7 +69,7 @@ public class ScanPictureActivity extends AppCompatActivity {
                 public void onPhotoTap(ImageView view, float x, float y) {
                     Intent data = new Intent();
                     data.putStringArrayListExtra(PhotoPickerActivity.PicList, paths);
-                    getActivity().setResult(PhotoPickerActivity.Extra_Scan, data);
+                    getActivity().setResult(RESULT_OK, data);
                     getActivity().finish();
                 }
             });

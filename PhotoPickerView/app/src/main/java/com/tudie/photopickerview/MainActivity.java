@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode == 127) {
             switch (requestCode) {
                 // 选择照片
-                case 127:
+                case RESULT_OK:
                     ArrayList<String> paths = data.getStringArrayListExtra(PhotoPickerActivity.PicList);
                     ((TextView)findViewById(R.id.textpaths)).setText("图片路径"+paths);
                     break;
