@@ -1,4 +1,4 @@
-package tudie.com.photopickerlibrary;
+package com.tudie.photopickerlibrary;
 
 import android.content.ContentValues;
 import android.content.Context;

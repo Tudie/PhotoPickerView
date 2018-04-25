@@ -27,8 +27,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import tudie.com.photopickerlibrary.ImageCaptureManager;
-
 /**
  * @name：
  * @createTime:： 2017/8/17.

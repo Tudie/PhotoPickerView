@@ -11,13 +11,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.tudie.photopickerlibrary.glide.GlideLoader;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import tudie.com.photopickerlibrary.ImageCaptureManager;
 
 /**
  * @name：
@@ -64,7 +64,12 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
             if (position == 0) {
                 holder.mask.setVisibility(View.GONE);
                 holder.checkmark.setVisibility(View.GONE);
-                GlideLoader.GlideNormel(holder.image, R.mipmap.pic_camera, itemSize, itemSize);
+                RequestOptions options = new RequestOptions()
+                        .error(R.mipmap.pic_noimages)
+                        .placeholder(R.mipmap.pic_noimages)
+                        .skipMemoryCache(true)
+                        .override(itemSize, itemSize);
+                Glide.with(holder.image.getContext()).load(R.mipmap.pic_camera).thumbnail(0.1f).apply(options).into(holder.image);
                 holder.flayout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -85,7 +90,10 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
                     holder.mask.setVisibility(View.GONE);
                 }
                 // 显示图片
-                GlideLoader.GlideNormel(holder.image, mImages.get(position - 1).path);
+                RequestOptions options = new RequestOptions()
+                        .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
+                Glide.with(holder.image.getContext()).load(mImages.get(position-1).path).thumbnail(0.1f).apply(options).into(holder.image);
+
 
                 holder.flayout.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -123,7 +131,10 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
                 holder.mask.setVisibility(View.GONE);
             }
             // 显示图片
-            GlideLoader.GlideNormel(holder.image, mImages.get(position).path);
+            RequestOptions options = new RequestOptions()
+                    .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
+            Glide.with(holder.image.getContext()).load(mImages.get(position).path).thumbnail(0.1f).apply(options).into(holder.image);
+
 
             holder.flayout.setOnClickListener(new View.OnClickListener() {
                 @Override

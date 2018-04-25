@@ -11,9 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.tudie.photopickerlibrary.PhotoPickerActivity;
 import com.tudie.photopickerlibrary.R;
-import com.tudie.photopickerlibrary.glide.GlideLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,7 +77,10 @@ public class ScanPictureActivity extends AppCompatActivity {
             });
 
 //            photoView.setImageResource(paths.get(position));
-            GlideLoader.GlideNormel(photoView, paths.get(position));
+            RequestOptions options = new RequestOptions()
+                    .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
+            Glide.with(photoView.getContext()).load(paths.get(position)).thumbnail(0.1f).apply(options).into(photoView);
+
             // Now just add PhotoView to ViewPager and return it
             container.addView(photoView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 

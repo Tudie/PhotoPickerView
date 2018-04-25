@@ -8,7 +8,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.tudie.photopickerlibrary.glide.GlideLoader;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -79,8 +82,10 @@ public class FolderAdapter extends BaseAdapter {
                 holder.size.setText(getTotalImageSize() + "张");
                 if(mFolders.size()>0){
                     Folder f = mFolders.get(0);
+                    RequestOptions options = new RequestOptions()
+                            .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
+                    Glide.with(holder.cover.getContext()).load(new File(f.cover.path)).thumbnail(0.1f).apply(options).into(holder.cover);
 
-                    GlideLoader.GlideNormel(holder.cover,new File(f.cover.path));
                 }
             }else {
                 holder.bindData(getItem(i));
@@ -132,7 +137,10 @@ public class FolderAdapter extends BaseAdapter {
             name.setText(data.name);
             size.setText(data.images.size() + "张");
             // 显示图片
-            GlideLoader.GlideNormel(cover,new File(data.cover.path));
+            RequestOptions options = new RequestOptions()
+                    .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
+            Glide.with(cover.getContext()).load(new File(data.cover.path)).thumbnail(0.1f).apply(options).into(cover);
+
 //            Glide.with(mContext)
 //                    .load(new File(data.cover.path))
 //                    .placeholder(R.mipmap.default_error)

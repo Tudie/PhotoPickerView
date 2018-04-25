@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == 127) {
-            switch (requestCode) {
+        if (requestCode == 127) {
+            switch (resultCode) {
                 // 选择照片
                 case RESULT_OK:
                     ArrayList<String> paths = data.getStringArrayListExtra(PhotoPickerActivity.PicList);
