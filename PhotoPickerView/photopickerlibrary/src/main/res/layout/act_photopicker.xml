@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     android:clipToPadding="true"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
@@ -25,8 +26,8 @@
                 android:layout_centerVertical="true"
                 android:drawablePadding="5dp"
                 android:drawableStart="@mipmap/pic_back"
-                android:gravity="center"
                 android:enabled="false"
+                android:gravity="center"
                 android:text="图片"
                 android:textColor="@color/action_text_color_normal"
                 android:textSize="@dimen/action_text_size" />
