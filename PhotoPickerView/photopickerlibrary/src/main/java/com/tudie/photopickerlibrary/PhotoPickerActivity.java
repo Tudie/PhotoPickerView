@@ -1,9 +1,6 @@
 package com.tudie.photopickerlibrary;
 
-import android.app.LoaderManager;
-import android.content.CursorLoader;
 import android.content.Intent;
-import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -14,11 +11,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ListPopupWindow;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ListPopupWindow;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -92,7 +92,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
         IntentData();
         initRecyclerView();
         // 首次加载所有图片
-        getSupportLoaderManager().initLoader(LOADER_ALL, null, (androidx.loader.app.LoaderManager.LoaderCallbacks<Object>) mLoaderCallback);
+        getSupportLoaderManager().initLoader(LOADER_ALL, null, mLoaderCallback);
         // 打开相册列表
         btnAlbum.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -203,7 +203,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
                         mFolderPopupWindow.dismiss();
 
                         if (index == 0) {
-                            getSupportLoaderManager().restartLoader(LOADER_ALL, null, (androidx.loader.app.LoaderManager.LoaderCallbacks<Object>) mLoaderCallback);
+                            getSupportLoaderManager().restartLoader(LOADER_ALL, null, mLoaderCallback);
                             btnAlbum.setText(R.string.all_image);
                         } else {
                             Folder folder = (Folder) v.getAdapter().getItem(index);

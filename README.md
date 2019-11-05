@@ -29,5 +29,5 @@
     startActivityForResult(data, PhotoPickerActivity.Extra_Scan);
 
 ## 4.说明
-    v1.0.3开始 androidx替换support库
+    v1.0.4开始 androidx替换support库
     V1.0.2 support库可继续使用
