@@ -5,13 +5,14 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * @name： 网格分割线
- * @author： 杨广
- * @phone： 17382373271
+ * @author：
+ * @phone：
  * @createTime:： 2017/8/17.
  * @modifyTime： 2017/8/17.
  * @explain：

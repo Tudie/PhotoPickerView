@@ -6,15 +6,16 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * @name：  万能分割线
- * @author： 杨广
- * @phone： 17382373271
+ * @author：
+ * @phone：
  * @createTime:： 2017/8/17.
  * @modifyTime： 2017/8/17.
  * @explain：

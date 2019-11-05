@@ -10,7 +10,7 @@
 	}
 ### Step 2. Add the dependency
      dependencies {
-	         implementation 'com.github.Tudie:PhotoPickerView:v1.0.1'
+	         implementation 'com.github.Tudie:PhotoPickerView:v1.0.2'
 	}
 
 ## 2. 跳转到相册使用
@@ -27,3 +27,7 @@
     data.putStringArrayListExtra(PhotoPickerActivity.PicList,imgList);//图片数组
     data.setClass(PhotoPickerActivity.this, ScanPictureActivity.class);
     startActivityForResult(data, PhotoPickerActivity.Extra_Scan);
+
+## 4.说明
+    v1.0.2开始 androidx替换support库
+    V1.0.1 support库可继续使用

@@ -1,25 +1,26 @@
 package com.tudie.photopickerlibrary;
 
+import android.app.LoaderManager;
+import android.content.CursorLoader;
 import android.content.Intent;
+import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.ListPopupWindow;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListPopupWindow;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.tudie.photopickerlibrary.scanpicture.ScanPictureActivity;
 
@@ -91,7 +92,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
         IntentData();
         initRecyclerView();
         // 首次加载所有图片
-        getSupportLoaderManager().initLoader(LOADER_ALL, null, mLoaderCallback);
+        getSupportLoaderManager().initLoader(LOADER_ALL, null, (androidx.loader.app.LoaderManager.LoaderCallbacks<Object>) mLoaderCallback);
         // 打开相册列表
         btnAlbum.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,7 +203,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
                         mFolderPopupWindow.dismiss();
 
                         if (index == 0) {
-                            getSupportLoaderManager().restartLoader(LOADER_ALL, null, mLoaderCallback);
+                            getSupportLoaderManager().restartLoader(LOADER_ALL, null, (androidx.loader.app.LoaderManager.LoaderCallbacks<Object>) mLoaderCallback);
                             btnAlbum.setText(R.string.all_image);
                         } else {
                             Folder folder = (Folder) v.getAdapter().getItem(index);

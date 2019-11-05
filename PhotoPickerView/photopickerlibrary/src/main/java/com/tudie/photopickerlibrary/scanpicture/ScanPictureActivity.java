@@ -3,13 +3,13 @@ package com.tudie.photopickerlibrary.scanpicture;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -22,8 +22,8 @@ import java.util.List;
 
 /**
  * @name：
- * @author： 杨广
- * @phone： 17382373271
+ * @author：
+ * @phone：
  * @createTime:： 2017/8/17.
  * @modifyTime： 2017/8/17.
  * @explain：
