@@ -10,7 +10,7 @@
 	}
 ### Step 2. Add the dependency
      dependencies {
-	         implementation 'com.github.Tudie:PhotoPickerView:v1.0.2'
+	         implementation 'com.github.Tudie:PhotoPickerView:v1.0.6'
 	}
 
 ## 2. 跳转到相册使用
