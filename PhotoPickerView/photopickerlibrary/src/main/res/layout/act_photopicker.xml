@@ -27,7 +27,6 @@
                 android:drawablePadding="5dp"
                 android:drawableStart="@mipmap/pic_back"
                 android:gravity="center"
-                android:enabled="false"
                 android:text="图片"
                 android:textColor="@color/action_text_color_normal"
                 android:textSize="@dimen/action_text_size" />

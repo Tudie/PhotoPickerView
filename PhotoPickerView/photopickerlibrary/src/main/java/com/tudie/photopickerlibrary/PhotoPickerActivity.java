@@ -68,7 +68,6 @@ public class PhotoPickerActivity extends AppCompatActivity {
     private Button btnPreview;
     private TextView title_next;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +83,12 @@ public class PhotoPickerActivity extends AppCompatActivity {
         btnAlbum = (Button) findViewById(R.id.btnAlbum);
         btnPreview = (Button) findViewById(R.id.btnPreview);
         title_next = (TextView) findViewById(R.id.title_next);
-
+        findViewById(R.id.title_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void initData() {
