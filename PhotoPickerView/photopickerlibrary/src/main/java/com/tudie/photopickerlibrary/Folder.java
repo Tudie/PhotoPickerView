@@ -12,6 +12,17 @@ public class Folder {
     public Image cover;
     public List<Image> images;
 
+//    public Folder() {
+//
+//    }
+
+//    public Folder(String name, String path, Image cover, List<Image> images) {
+//        this.name = name;
+//        this.path = path;
+//        this.cover = cover;
+//        this.images = images;
+//    }
+
     @Override
     public boolean equals(Object o) {
         try {

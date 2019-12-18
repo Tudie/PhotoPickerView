@@ -42,6 +42,7 @@
             android:id="@+id/size"
             android:layout_marginTop="5dp"
             android:textSize="12sp"
+            android:visibility="gone"
             android:textColor="#AFAFAF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

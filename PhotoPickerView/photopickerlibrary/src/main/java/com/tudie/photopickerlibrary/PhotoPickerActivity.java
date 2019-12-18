@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.tudie.photopickerlibrary.scanpicture.ScanPictureActivity;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -132,8 +133,6 @@ public class PhotoPickerActivity extends AppCompatActivity {
             }
         });
         mFolderAdapter = new FolderAdapter(PhotoPickerActivity.this);
-
-
     }
 
     private void IntentData() {
@@ -283,9 +282,12 @@ public class PhotoPickerActivity extends AppCompatActivity {
                             folder.cover = image;
                             if (!mResultFolder.contains(folder)) {
                                 List<Image> imageList = new ArrayList<>();
-                                imageList.add(image);
-                                folder.images = imageList;
-                                mResultFolder.add(folder);
+                                if (getFileSize(imageFile)>4000){
+                                    imageList.add(image);
+                                    folder.images = imageList;
+                                    mResultFolder.add(folder);
+                                }
+
                             } else {
                                 // 更新
                                 Folder f = mResultFolder.get(mResultFolder.indexOf(folder));
@@ -309,6 +311,25 @@ public class PhotoPickerActivity extends AppCompatActivity {
 
         }
     };
+    /**
+     * 获取指定文件大小
+     * @param f
+     * @return
+     * @throws Exception
+     */
+    private long getFileSize(File file){
+        long size = 0;
+        if (file.exists()){
+            try {
+                FileInputStream fis = null;
+                fis = new FileInputStream(file);
+                size = fis.available();
+            }catch (Exception e){}
+
+        }
+        return size;
+    }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

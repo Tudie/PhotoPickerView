@@ -15,6 +15,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -167,13 +169,36 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
      */
     public void setData(List<Image> images) {
         mSelectedImages.clear();
-
+        List<Image> imagess=new ArrayList<>();
         if (images != null && images.size() > 0) {
-            mImages = images;
+            for (int i = 0; i <images.size() ; i++) {
+                if (getFileSize(new File(images.get(i).path))>2000)
+                    imagess.add(images.get(i));
+            }
+            mImages = imagess;
         } else {
             mImages.clear();
         }
         notifyDataSetChanged();
+    }
+
+    /**
+     * 获取指定文件大小
+     * @param f
+     * @return
+     * @throws Exception
+     */
+    private long getFileSize(File file){
+        long size = 0;
+        if (file.exists()){
+            try {
+                FileInputStream fis = null;
+                fis = new FileInputStream(file);
+                size = fis.available();
+            }catch (Exception e){}
+
+        }
+        return size;
     }
 
     /**

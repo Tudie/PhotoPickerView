@@ -1,6 +1,10 @@
 package com.tudie.photopickerlibrary;
 
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +18,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +29,7 @@ import java.util.List;
  */
 public class FolderAdapter extends BaseAdapter {
 
-    private Context mContext;
+    private Activity mContext;
     private LayoutInflater mInflater;
 
     private List<Folder> mFolders = new ArrayList<>();
@@ -32,7 +38,7 @@ public class FolderAdapter extends BaseAdapter {
 
     int lastSelected = 0;
 
-    public FolderAdapter(Context context){
+    public FolderAdapter(Activity context){
         mContext = context;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mImageSize = mContext.getResources().getDimensionPixelOffset(R.dimen.folder_cover_size);
@@ -44,6 +50,17 @@ public class FolderAdapter extends BaseAdapter {
      */
     public void setData(List<Folder> folders) {
         if(folders != null && folders.size()>0){
+//            List<Folder> folderss=new ArrayList<>();
+//            for (int i = 0; i < folders.size(); i++) {
+//                List<Image> liss=folders.get(i).images;
+//                List<Image> lis=new ArrayList<>();
+//                for (int j = 0; j < liss.size(); j++) {
+//                    Image image = liss.get(j);
+//                    if (getFileSize(new File(image.path))>2000)
+//                        lis.add(liss.get(i));
+//                }
+//                folderss.add(new Folder(folders.get(i).name,folders.get(i).path,folders.get(i).cover,lis));
+//            }
             mFolders = folders;
         }else{
             mFolders.clear();
@@ -84,8 +101,8 @@ public class FolderAdapter extends BaseAdapter {
                     Folder f = mFolders.get(0);
                     RequestOptions options = new RequestOptions()
                             .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
-                    Glide.with(holder.cover.getContext()).load(new File(f.cover.path)).thumbnail(0.1f).apply(options).into(holder.cover);
-
+                    Glide.with(mContext).load(new File(f.cover.path)).thumbnail(0.1f).apply(options).into(holder.cover);
+//                    holder.cover.setImageBitmap(decodeSampledBitmapPath(f.cover.path));
                 }
             }else {
                 holder.bindData(getItem(i));
@@ -139,8 +156,9 @@ public class FolderAdapter extends BaseAdapter {
             // 显示图片
             RequestOptions options = new RequestOptions()
                     .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
-            Glide.with(cover.getContext()).load(new File(data.cover.path)).thumbnail(0.1f).apply(options).into(cover);
 
+            Glide.with(mContext).load(new File(data.cover.path)).thumbnail(0.1f).apply(options).into(cover);
+//            cover.setImageBitmap(decodeSampledBitmapPath(data.cover.path));
 //            Glide.with(mContext)
 //                    .load(new File(data.cover.path))
 //                    .placeholder(R.mipmap.default_error)
@@ -151,5 +169,25 @@ public class FolderAdapter extends BaseAdapter {
 
         }
     }
+
+    /**
+     * 获取指定文件大小
+     * @param f
+     * @return
+     * @throws Exception
+     */
+    private long getFileSize(File file){
+        long size = 0;
+        if (file.exists()){
+            try {
+                FileInputStream fis = null;
+                fis = new FileInputStream(file);
+                size = fis.available();
+            }catch (Exception e){}
+
+        }
+        return size;
+    }
+
 
 }
