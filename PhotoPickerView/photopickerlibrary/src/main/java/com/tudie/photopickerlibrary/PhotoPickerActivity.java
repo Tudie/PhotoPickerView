@@ -277,7 +277,12 @@ public class PhotoPickerActivity extends AppCompatActivity {
                             File imageFile = new File(path);
                             File folderFile = imageFile.getParentFile();
                             Folder folder = new Folder();
-                            folder.name = folderFile.getName();
+                            try {
+                                folder.name = folderFile.getName();
+                            }catch (Exception e){
+                                folder.name = "Pic";
+                            }
+
                             folder.path = folderFile.getAbsolutePath();
                             folder.cover = image;
                             if (!mResultFolder.contains(folder)) {
