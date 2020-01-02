@@ -172,7 +172,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
         List<Image> imagess=new ArrayList<>();
         if (images != null && images.size() > 0) {
             for (int i = 0; i <images.size() ; i++) {
-                if (getFileSize(new File(images.get(i).path))>2000)
+                if (getFileSize(new File(images.get(i).path))>10)
                     imagess.add(images.get(i));
             }
             mImages = imagess;

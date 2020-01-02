@@ -287,7 +287,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
                             folder.cover = image;
                             if (!mResultFolder.contains(folder)) {
                                 List<Image> imageList = new ArrayList<>();
-                                if (getFileSize(imageFile)>4000){
+                                if (getFileSize(imageFile)>10){
                                     imageList.add(image);
                                     folder.images = imageList;
                                     mResultFolder.add(folder);
