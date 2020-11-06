@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,6 +23,7 @@ import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.tudie.photopickerlibrary.scanpicture.ScanPictureActivity;
 
 import java.io.File;
@@ -73,6 +75,12 @@ public class PhotoPickerActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_photopicker);
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                Glide.get(PhotoPickerActivity.this).clearDiskCache();
+//            }
+//        }).start();
         initView();
         initData();
 

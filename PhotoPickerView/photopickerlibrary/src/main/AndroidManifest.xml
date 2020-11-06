@@ -4,9 +4,21 @@
 
     <application
         android:allowBackup="true"
+        android:usesCleartextTraffic="true"
         android:supportsRtl="true">
-        <activity android:name=".PhotoPickerActivity" />
-        <activity android:name=".scanpicture.ScanPictureActivity" />
+        <activity android:name="com.tudie.photopickerlibrary.PhotoPickerActivity" />
+        <activity android:name="com.tudie.photopickerlibrary.scanpicture.ScanPictureActivity" />
+        <!--7.0访问安装包-->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
     </application>
 
 </manifest>

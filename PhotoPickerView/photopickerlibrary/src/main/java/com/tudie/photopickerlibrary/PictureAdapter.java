@@ -71,7 +71,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
                         .placeholder(R.mipmap.pic_noimages)
                         .skipMemoryCache(true)
                         .override(itemSize, itemSize);
-                Glide.with(holder.image.getContext()).load(R.mipmap.pic_camera).thumbnail(0.1f).apply(options).into(holder.image);
+                Glide.with(holder.image.getContext()).load(R.mipmap.pic_camera).thumbnail(0.01f).apply(options).into(holder.image);
                 holder.flayout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
