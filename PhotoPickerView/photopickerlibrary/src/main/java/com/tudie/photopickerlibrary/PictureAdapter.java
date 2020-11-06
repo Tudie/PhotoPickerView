@@ -92,9 +92,12 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
                     holder.mask.setVisibility(View.GONE);
                 }
                 // 显示图片
-                RequestOptions options = new RequestOptions()
-                        .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
-                Glide.with(holder.image.getContext()).load(mImages.get(position-1).path).thumbnail(0.01f).apply(options).into(holder.image);
+                try {
+                    RequestOptions options = new RequestOptions()
+                            .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
+                    Glide.with(holder.image.getContext()).load(mImages.get(position-1).path).thumbnail(0.01f).apply(options).into(holder.image);
+
+                }catch (Exception e){}
 
 
                 holder.flayout.setOnClickListener(new View.OnClickListener() {
@@ -133,10 +136,12 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
                 holder.mask.setVisibility(View.GONE);
             }
             // 显示图片
-            RequestOptions options = new RequestOptions()
-                    .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
-            Glide.with(holder.image.getContext()).load(mImages.get(position).path).thumbnail(0.01f).apply(options).into(holder.image);
+           try {
+               RequestOptions options = new RequestOptions()
+                       .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
+               Glide.with(holder.image.getContext()).load(mImages.get(position).path).thumbnail(0.01f).apply(options).into(holder.image);
 
+           }catch (Exception e){}
 
             holder.flayout.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -184,7 +189,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
 
     /**
      * 获取指定文件大小
-     * @param f
+     * @param 
      * @return
      * @throws Exception
      */
