@@ -94,7 +94,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
                 // 显示图片
                 RequestOptions options = new RequestOptions()
                         .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
-                Glide.with(holder.image.getContext()).load(mImages.get(position-1).path).thumbnail(0.1f).apply(options).into(holder.image);
+                Glide.with(holder.image.getContext()).load(mImages.get(position-1).path).thumbnail(0.01f).apply(options).into(holder.image);
 
 
                 holder.flayout.setOnClickListener(new View.OnClickListener() {
@@ -135,7 +135,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
             // 显示图片
             RequestOptions options = new RequestOptions()
                     .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
-            Glide.with(holder.image.getContext()).load(mImages.get(position).path).thumbnail(0.1f).apply(options).into(holder.image);
+            Glide.with(holder.image.getContext()).load(mImages.get(position).path).thumbnail(0.01f).apply(options).into(holder.image);
 
 
             holder.flayout.setOnClickListener(new View.OnClickListener() {
