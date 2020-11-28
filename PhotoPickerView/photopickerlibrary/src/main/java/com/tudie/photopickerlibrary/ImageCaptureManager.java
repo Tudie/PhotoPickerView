@@ -48,6 +48,22 @@ public class ImageCaptureManager {
         mCurrentPhotoPath = image.getAbsolutePath();
         return image;
     }
+    private File createVideoFile() throws IOException {
+
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        String imageFileName = "VID_" + timeStamp ;
+        File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES);
+        if (!storageDir.exists()) {
+            if (!storageDir.mkdir()) {
+                throw new IOException();
+            }
+        }
+        File image = new File(storageDir, imageFileName + ".mp4");
+        // Save a file: path for use with ACTION_VIEW intents
+        mCurrentPhotoPath = image.getAbsolutePath();
+        return image;
+    }
 
 
     public Intent dispatchTakePictureIntent() throws IOException {
@@ -66,6 +82,33 @@ public class ImageCaptureManager {
                     ContentValues contentValues = new ContentValues(1);
                     contentValues.put(MediaStore.Images.Media.DATA, photoFile.getPath());
                     photoURI = mContext.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,contentValues);
+                } else {
+                    //7.0以下使用这种方式创建一个Uri
+                    photoURI = Uri.fromFile(photoFile);
+                }
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
+                        photoURI);
+            }
+        }
+        return takePictureIntent;
+    }
+
+    public Intent dispatchTakeVideoIntent() throws IOException {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+        // Ensure that there's a camera activity to handle the intent
+        if (takePictureIntent.resolveActivity(mContext.getPackageManager()) != null) {
+            // Create the File where the photo should go
+            File photoFile = createVideoFile();
+            // Continue only if the File was successfully created
+
+            if (photoFile != null) {
+                Uri photoURI = null;
+
+                if (Build.VERSION.SDK_INT >= 24) {
+                    //如果是7.0及以上的系统使用FileProvider的方式创建一个Uri
+                    ContentValues contentValues = new ContentValues(1);
+                    contentValues.put(MediaStore.Video.Media.DATA, photoFile.getPath());
+                    photoURI = mContext.getContentResolver().insert(MediaStore.Video.Media.EXTERNAL_CONTENT_URI,contentValues);
                 } else {
                     //7.0以下使用这种方式创建一个Uri
                     photoURI = Uri.fromFile(photoFile);

@@ -4,10 +4,11 @@
 
     <application
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
-        android:supportsRtl="true">
-        <activity android:name="com.tudie.photopickerlibrary.PhotoPickerActivity" />
-        <activity android:name="com.tudie.photopickerlibrary.scanpicture.ScanPictureActivity" />
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".PhotoPickerActivity" />
+        <activity android:name=".scanpicture.ScanPictureActivity" />
         <!--7.0访问安装包-->
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -1,0 +1,6 @@
+<resources>
+
+    <dimen name="navigation_height">40dp</dimen>
+    <dimen name="navigation_heights">80dp</dimen>
+
+</resources>

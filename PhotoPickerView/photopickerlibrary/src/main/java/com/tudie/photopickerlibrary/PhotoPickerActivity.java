@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,7 +25,6 @@ import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.tudie.photopickerlibrary.scanpicture.ScanPictureActivity;
 
 import java.io.File;
@@ -43,6 +44,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
     public static final String Extra_Code_Type = "reqeuse_code";
     public static final String Select_Count_Type = "max_select_count";
     public static final String Select_Count_CAMERA = "show_camera";
+    public static final String Select_Video_Type= "show_video";
     public static final String PicList = "listpicdata";
     private int DefaultPicNumber = 1;//默认最大照片数量
     private boolean IsShowCamera = true;//是否显示相机
@@ -63,7 +65,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
     private static final int LOADER_CATEGORY = 1;
 
     private boolean hasFolderGened = false;
-    private boolean mIsShowCamera = false;
+    public boolean isVideo = false;
     private ImageCaptureManager captureManager;
 
     private View mPopupAnchorView;
@@ -74,16 +76,22 @@ public class PhotoPickerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+                    | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION //这里删除的话  可以解决华为虚拟按键的覆盖
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
+            window.setNavigationBarColor(Color.TRANSPARENT);//这里删除的话
+        }
         setContentView(R.layout.act_photopicker);
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                Glide.get(PhotoPickerActivity.this).clearDiskCache();
-//            }
-//        }).start();
+
         initView();
         initData();
-
     }
 
     private void initView() {
@@ -92,7 +100,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
         btnAlbum = (Button) findViewById(R.id.btnAlbum);
         btnPreview = (Button) findViewById(R.id.btnPreview);
         title_next = (TextView) findViewById(R.id.title_next);
-        findViewById(R.id.title_back).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.title_back_ll).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -155,11 +163,14 @@ public class PhotoPickerActivity extends AppCompatActivity {
             if (bundle.containsKey(Extra_Code_Type)) {
                 Extra_Code = bundle.getInt(Extra_Code_Type);
             }
+            if (bundle.containsKey(Select_Video_Type)) {
+                isVideo = bundle.getBoolean(Select_Video_Type);
+            }
         }
     }
 
     private void initRecyclerView() {
-        adapter = new PictureAdapter(PhotoPickerActivity.this, getItemImageWidth(), IsShowCamera, DefaultPicNumber, captureManager, new PictureAdapter.CallBack() {
+        adapter = new PictureAdapter(PhotoPickerActivity.this, isVideo, getItemImageWidth(), IsShowCamera, DefaultPicNumber, captureManager, new PictureAdapter.CallBack() {
             @Override
             public void values(int selectnumber) {
                 refreshActionStatus(selectnumber);
@@ -239,29 +250,53 @@ public class PhotoPickerActivity extends AppCompatActivity {
                 MediaStore.Images.Media.DISPLAY_NAME,
                 MediaStore.Images.Media.DATE_ADDED,
                 MediaStore.Images.Media._ID};
+        private final String[] IMAGE_PROJECTION_Video = {
+                MediaStore.Video.Media.DATA,
+                MediaStore.Video.Media.DISPLAY_NAME,
+                MediaStore.Video.Media.DATE_ADDED,
+                MediaStore.Video.Media._ID};
 
         @Override
         public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 
             // 根据图片设置参数新增验证条件
             StringBuilder selectionArgs = new StringBuilder();
-
-            if (id == LOADER_ALL) {
-                CursorLoader cursorLoader = new CursorLoader(PhotoPickerActivity.this,
-                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI, IMAGE_PROJECTION,
-                        selectionArgs.toString(), null, IMAGE_PROJECTION[2] + " DESC");
-                return cursorLoader;
-            } else if (id == LOADER_CATEGORY) {
-                String selectionStr = selectionArgs.toString();
-                if (!"".equals(selectionStr)) {
-                    selectionStr += " and" + selectionStr;
+            if (isVideo) {
+                if (id == LOADER_ALL) {
+                    CursorLoader cursorLoader = new CursorLoader(PhotoPickerActivity.this,
+                            MediaStore.Video.Media.EXTERNAL_CONTENT_URI, IMAGE_PROJECTION_Video,
+                            selectionArgs.toString(), null, IMAGE_PROJECTION_Video[2] + " DESC");
+                    return cursorLoader;
+                } else if (id == LOADER_CATEGORY) {
+                    String selectionStr = selectionArgs.toString();
+                    if (!"".equals(selectionStr)) {
+                        selectionStr += " and" + selectionStr;
+                    }
+                    CursorLoader cursorLoader = new CursorLoader(PhotoPickerActivity.this,
+                            MediaStore.Video.Media.EXTERNAL_CONTENT_URI, IMAGE_PROJECTION_Video,
+                            IMAGE_PROJECTION_Video[0] + " like '%" + args.getString("path") + "%'" + selectionStr, null,
+                            IMAGE_PROJECTION_Video[2] + " DESC");
+                    return cursorLoader;
                 }
-                CursorLoader cursorLoader = new CursorLoader(PhotoPickerActivity.this,
-                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI, IMAGE_PROJECTION,
-                        IMAGE_PROJECTION[0] + " like '%" + args.getString("path") + "%'" + selectionStr, null,
-                        IMAGE_PROJECTION[2] + " DESC");
-                return cursorLoader;
+            } else {
+                if (id == LOADER_ALL) {
+                    CursorLoader cursorLoader = new CursorLoader(PhotoPickerActivity.this,
+                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI, IMAGE_PROJECTION,
+                            selectionArgs.toString(), null, IMAGE_PROJECTION[2] + " DESC");
+                    return cursorLoader;
+                } else if (id == LOADER_CATEGORY) {
+                    String selectionStr = selectionArgs.toString();
+                    if (!"".equals(selectionStr)) {
+                        selectionStr += " and" + selectionStr;
+                    }
+                    CursorLoader cursorLoader = new CursorLoader(PhotoPickerActivity.this,
+                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI, IMAGE_PROJECTION,
+                            IMAGE_PROJECTION[0] + " like '%" + args.getString("path") + "%'" + selectionStr, null,
+                            IMAGE_PROJECTION[2] + " DESC");
+                    return cursorLoader;
+                }
             }
+
 
             return null;
         }
@@ -274,9 +309,18 @@ public class PhotoPickerActivity extends AppCompatActivity {
                 if (count > 0) {
                     data.moveToFirst();
                     do {
-                        String path = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[0]));
-                        String name = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[1]));
-                        long dateTime = data.getLong(data.getColumnIndexOrThrow(IMAGE_PROJECTION[2]));
+                        String path = "";
+                        String name = "";
+                        long dateTime = 0;
+                        if (isVideo) {
+                            path = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[0]));
+                            name = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[1]));
+                            dateTime = data.getLong(data.getColumnIndexOrThrow(IMAGE_PROJECTION[2]));
+                        } else {
+                            path = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[0]));
+                            name = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[1]));
+                            dateTime = data.getLong(data.getColumnIndexOrThrow(IMAGE_PROJECTION[2]));
+                        }
 
                         Image image = new Image(path, name, dateTime);
                         images.add(image);
@@ -287,7 +331,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
                             Folder folder = new Folder();
                             try {
                                 folder.name = folderFile.getName();
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 folder.name = "Pic";
                             }
 
@@ -295,7 +339,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
                             folder.cover = image;
                             if (!mResultFolder.contains(folder)) {
                                 List<Image> imageList = new ArrayList<>();
-                                if (getFileSize(imageFile)>10){
+                                if (getFileSize(imageFile) > 10) {
                                     imageList.add(image);
                                     folder.images = imageList;
                                     mResultFolder.add(folder);
@@ -324,20 +368,23 @@ public class PhotoPickerActivity extends AppCompatActivity {
 
         }
     };
+
     /**
      * 获取指定文件大小
-     * @param f
+     *
+     * @param
      * @return
      * @throws Exception
      */
-    private long getFileSize(File file){
+    private long getFileSize(File file) {
         long size = 0;
-        if (file.exists()){
+        if (file.exists()) {
             try {
                 FileInputStream fis = null;
                 fis = new FileInputStream(file);
                 size = fis.available();
-            }catch (Exception e){}
+            } catch (Exception e) {
+            }
 
         }
         return size;
@@ -385,13 +432,13 @@ public class PhotoPickerActivity extends AppCompatActivity {
      */
     private void refreshActionStatus(int selectnumber) {
         if (selectnumber < 1) {
-            title_next.setText(getResources().getString(R.string.done));
+            title_next.setText("");
             btnPreview.setText(getResources().getString(R.string.preview));
             btnPreview.setEnabled(false);
             title_next.setEnabled(false);
         } else {
             if (DefaultPicNumber == 1) {
-                resultList=adapter.GetSelectPath();
+                resultList = adapter.GetSelectPath();
                 complete();
             } else {
                 title_next.setText(getResources().getString(R.string.done) + "(" + selectnumber + "/" + DefaultPicNumber + ")");
@@ -414,7 +461,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
         int cols = getNumColnums();
         int screenWidth = getResources().getDisplayMetrics().widthPixels;
         int columnSpace = getResources().getDimensionPixelOffset(R.dimen.space_size);
-        Log.i(">>>>>>>>columnSpace",">>>>>>>>columnSpace"+columnSpace);
+        Log.i(">>>>>>>>columnSpace", ">>>>>>>>columnSpace" + columnSpace);
         return (screenWidth - columnSpace * (cols - 1)) / cols;
     }
 

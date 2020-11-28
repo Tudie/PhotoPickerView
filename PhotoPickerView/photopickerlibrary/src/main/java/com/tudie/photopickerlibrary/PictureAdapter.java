@@ -39,9 +39,11 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
     private List<Image> mImages = new ArrayList<>();
     private List<Image> mSelectedImages = new ArrayList<>();
     private CallBack callBack;
+    private boolean isVideo;
 
-    public PictureAdapter(Activity mContext, int whith, boolean IsShowCamera, int count, ImageCaptureManager captureManager, CallBack callBack) {
+    public PictureAdapter(Activity mContext,boolean isVideo ,int whith, boolean IsShowCamera, int count, ImageCaptureManager captureManager, CallBack callBack) {
         this.mContext = mContext;
+        this.isVideo = isVideo;
         this.itemSize = whith;
         this.IsShowCamera = IsShowCamera;
         this.count = count;
@@ -93,11 +95,12 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
                 }
                 // 显示图片
                 try {
-                    RequestOptions options = new RequestOptions()
-                            .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
-                    Glide.with(holder.image.getContext()).load(mImages.get(position-1).path).thumbnail(0.01f).apply(options).into(holder.image);
-
-                }catch (Exception e){}
+//                    RequestOptions options = new RequestOptions()
+//                            .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
+//                    Glide.with(holder.image.getContext()).load(mImages.get(position - 1).path).thumbnail(0.01f).apply(options).into(holder.image);
+                    Glideurl(holder.image, mImages.get(position-1).path);
+                } catch (Exception e) {
+                }
 
 
                 holder.flayout.setOnClickListener(new View.OnClickListener() {
@@ -136,12 +139,13 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
                 holder.mask.setVisibility(View.GONE);
             }
             // 显示图片
-           try {
-               RequestOptions options = new RequestOptions()
-                       .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
-               Glide.with(holder.image.getContext()).load(mImages.get(position).path).thumbnail(0.01f).apply(options).into(holder.image);
-
-           }catch (Exception e){}
+            try {
+                RequestOptions options = new RequestOptions()
+                        .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
+//               Glide.with(holder.image.getContext()).load(mImages.get(position).path).thumbnail(0.01f).apply(options).into(holder.image);
+                Glideurl(holder.image, mImages.get(position).path);
+            } catch (Exception e) {
+            }
 
             holder.flayout.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -168,16 +172,38 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
     }
 
     /**
+     * 加载视频
+     *
+     * @param imageView
+     * @param url
+     */
+
+    public static void Glideurl(ImageView imageView, Object url) {
+        try {
+            Glide.with(imageView.getContext())
+                    .setDefaultRequestOptions(
+                            new RequestOptions()
+                                    .centerCrop()
+                    )
+                    .load(url)
+                    .thumbnail(0.01f)
+                    .into(imageView);
+        } catch (Exception e) {
+
+        }
+    }
+
+    /**
      * 设置数据集
      *
      * @param images
      */
     public void setData(List<Image> images) {
         mSelectedImages.clear();
-        List<Image> imagess=new ArrayList<>();
+        List<Image> imagess = new ArrayList<>();
         if (images != null && images.size() > 0) {
-            for (int i = 0; i <images.size() ; i++) {
-                if (getFileSize(new File(images.get(i).path))>10)
+            for (int i = 0; i < images.size(); i++) {
+                if (getFileSize(new File(images.get(i).path)) > 10)
                     imagess.add(images.get(i));
             }
             mImages = imagess;
@@ -189,18 +215,20 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
 
     /**
      * 获取指定文件大小
-     * @param 
+     *
+     * @param
      * @return
      * @throws Exception
      */
-    private long getFileSize(File file){
+    private long getFileSize(File file) {
         long size = 0;
-        if (file.exists()){
+        if (file.exists()) {
             try {
                 FileInputStream fis = null;
                 fis = new FileInputStream(file);
                 size = fis.available();
-            }catch (Exception e){}
+            } catch (Exception e) {
+            }
 
         }
         return size;
@@ -261,9 +289,16 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
      * 选择相机
      */
     private void showCameraAction() {
+
         try {
-            Intent intent = captureManager.dispatchTakePictureIntent();
-            mContext.startActivityForResult(intent, ImageCaptureManager.REQUEST_TAKE_PHOTO);
+            if (isVideo){
+                Intent intent = captureManager.dispatchTakeVideoIntent();
+                mContext.startActivityForResult(intent, ImageCaptureManager.REQUEST_TAKE_PHOTO);
+            }else {
+                Intent intent = captureManager.dispatchTakePictureIntent();
+                mContext.startActivityForResult(intent, ImageCaptureManager.REQUEST_TAKE_PHOTO);
+            }
+
         } catch (IOException e) {
             Toast.makeText(mContext, R.string.msg_no_camera, Toast.LENGTH_SHORT).show();
             e.printStackTrace();

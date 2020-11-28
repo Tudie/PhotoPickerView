@@ -7,9 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49488c93-c9e4-406c-bb51-ff7c0f0d05ad" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PhotoPickerView/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/PhotoPickerView/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PhotoPickerView/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/PhotoPickerView/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/PhotoPickerActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/PhotoPickerActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/PictureAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/PictureAdapter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +31,7 @@
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunManager">
     <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
@@ -77,5 +80,11 @@
       <updated>1524648175774</updated>
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="938" y="457" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1606533596190">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="938" y="457" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606533596190" />
   </component>
 </project>
