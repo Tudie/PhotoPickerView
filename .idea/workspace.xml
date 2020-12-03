@@ -13,21 +13,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9385ed8a-27ac-49c0-ac1c-32eb2b7ded3b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/tudie/photopickerview/AppApption.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/tudie/photopickerview/SDCardUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tudie/photopickerview/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tudie/photopickerview/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photopickerlibrary/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/photopickerlibrary/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/Folder.java" beforeDir="false" afterPath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/Folder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/FolderAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/FolderAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/Image.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/PhotoPickerActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/PhotoPickerActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/PictureAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/PictureAdapter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
