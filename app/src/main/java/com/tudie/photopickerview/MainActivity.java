@@ -172,13 +172,13 @@ public class MainActivity extends AppCompatActivity {
                 case RESULT_OK:
                     ArrayList<String> paths = data.getStringArrayListExtra(PhotoPickerActivity.PicList);
                     ((TextView) findViewById(R.id.textpaths)).setText("路径  " + paths);
-                    try {
-                        Bitmap imageBitmap = SiliCompressor.with(this).getCompressBitmap(paths.get(0));
-                        ((ImageView) findViewById(R.id.ma_pic_iv)).setImageBitmap(imageBitmap);
-                    }catch (Exception e){}
+//                    try {
+//                        Bitmap imageBitmap = SiliCompressor.with(this).getCompressBitmap(paths.get(0));
+//                        ((ImageView) findViewById(R.id.ma_pic_iv)).setImageBitmap(imageBitmap);
+//                    }catch (Exception e){}
 //                    String filePath= SiliCompressor.with(this).compress(paths.get(0), destinationDirectory);
 //                    ((ImageView) findViewById(R.id.ma_pic_iv)).setImageBitmap(getimage(Uri.parse(paths.get(0))));
-//                    Glideurl((ImageView) findViewById(R.id.ma_pic_iv), getimage(Uri.parse(paths.get(0))));
+                    Glideurl((ImageView) findViewById(R.id.ma_pic_iv), getimage(Uri.parse(paths.get(0))));
 //                    saveBitmapFile(getimage(Uri.parse(paths.get(0))),0);
                     break;
 
