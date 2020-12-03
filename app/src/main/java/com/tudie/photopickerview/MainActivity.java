@@ -20,6 +20,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.iceteck.silicompressorr.SiliCompressor;
 import com.tudie.photopickerlibrary.PhotoPickerActivity;
@@ -188,14 +189,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Glideurl(ImageView imageView, Object url) {
-        Glide.with(imageView.getContext())
-                .setDefaultRequestOptions(
-                        new RequestOptions()
-                                .centerCrop()
-                )
-                .load(url)
-                .thumbnail(0.01f)
-                .into(imageView);
+        RequestOptions options = new RequestOptions()
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
+        Glide.with(imageView.getContext()).load(url).thumbnail(0.01f).apply(options).into(imageView);
+
     }
 
     public Bitmap getimage(Uri uri) {

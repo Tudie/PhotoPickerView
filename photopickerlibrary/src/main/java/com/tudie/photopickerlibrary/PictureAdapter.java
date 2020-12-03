@@ -181,14 +181,19 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
 
     public static void Glideurl(ImageView imageView, Object url) {
         try {
-            Glide.with(imageView.getContext())
-                    .setDefaultRequestOptions(
-                            new RequestOptions()
-                                    .centerCrop()
-                    )
-                    .load(url)
-                    .thumbnail(0.01f)
-                    .into(imageView);
+            RequestOptions options = new RequestOptions()
+                    .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
+               Glide.with(imageView.getContext()).load(url).thumbnail(0.01f).apply(options).into(imageView);
+
+//            Glide.with(imageView.getContext())
+//                    .setDefaultRequestOptions(
+//                            new RequestOptions()
+//                                    .centerCrop()
+//                    )
+//                    .load(url)
+//                    .thumbnail(0.01f)
+//                    .apply(options)
+//                    .into(imageView);
         } catch (Exception e) {
 
         }
