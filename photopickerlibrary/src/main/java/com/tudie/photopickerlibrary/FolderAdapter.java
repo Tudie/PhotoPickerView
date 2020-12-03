@@ -101,7 +101,7 @@ public class FolderAdapter extends BaseAdapter {
                     Folder f = mFolders.get(0);
                     RequestOptions options = new RequestOptions()
                             .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
-                    Glide.with(mContext).load(new File(f.cover.path)).thumbnail(0.1f).apply(options).into(holder.cover);
+                    Glide.with(mContext).load(f.cover.uri).thumbnail(0.1f).apply(options).into(holder.cover);
 //                    holder.cover.setImageBitmap(decodeSampledBitmapPath(f.cover.path));
                 }
             }else {
@@ -157,7 +157,7 @@ public class FolderAdapter extends BaseAdapter {
             RequestOptions options = new RequestOptions()
                     .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
 
-            Glide.with(mContext).load(new File(data.cover.path)).thumbnail(0.1f).apply(options).into(cover);
+            Glide.with(mContext).load(data.cover.uri).thumbnail(0.1f).apply(options).into(cover);
 //            cover.setImageBitmap(decodeSampledBitmapPath(data.cover.path));
 //            Glide.with(mContext)
 //                    .load(new File(data.cover.path))

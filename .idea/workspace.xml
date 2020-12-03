@@ -8,107 +8,26 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="&gt;&gt;&gt;" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="info" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9385ed8a-27ac-49c0-ac1c-32eb2b7ded3b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/tudie/photopickerview/AppApption.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/tudie/photopickerview/SDCardUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/.idea/caches/build_file_checksums.ser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/.idea/caches/gradle_models.ser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/src/androidTest/java/com/tudie/photopickerview/ExampleInstrumentedTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/src/main/java/com/tudie/photopickerview/MainActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/src/main/res/layout/activity_main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/src/main/res/values/colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/src/main/res/values/styles.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/src/main/res/xml/file_paths.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/src/main/res/xml/network_security_config.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/app/src/test/java/com/tudie/photopickerview/ExampleUnitTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/androidTest/java/tudie/com/photopickerlibrary/ExampleInstrumentedTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/Folder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/FolderAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/GridDivider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/Image.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/ImageCaptureManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/PhotoPickerActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/PictureAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/RecycleViewDivider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/scanpicture/Compat.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/scanpicture/CustomGestureDetector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/scanpicture/HackyViewPager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/scanpicture/OnGestureListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/scanpicture/OnMatrixChangedListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/scanpicture/OnOutsidePhotoTapListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/scanpicture/OnPhotoTapListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/scanpicture/OnScaleChangedListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/scanpicture/OnSingleFlingListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/scanpicture/OnViewDragListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/scanpicture/OnViewTapListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/scanpicture/PhotoView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/scanpicture/PhotoViewAttacher.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/scanpicture/ScanPictureActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/scanpicture/Util.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/color/action_text_color.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/drawable/text_indicator.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/layout/act_photopicker.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/layout/act_scanpicture.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/layout/item_folder.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/layout/item_image.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/layout/item_picture.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/mipmap-xxhdpi/btn_selected.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/mipmap-xxhdpi/btn_unselected.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/mipmap-xxhdpi/pic_back.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/mipmap-xxhdpi/pic_camera.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/mipmap-xxhdpi/pic_noimages.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/mipmap-xxhdpi/pic_pitchon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/mipmap-xxhdpi/text_indicator_normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/mipmap-xxhdpi/text_indicator_pressed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/values-v23/dimens.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/values/colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/values/dimens.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/values/styles.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/xml/file_paths.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/main/res/xml/network_security_config.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/photopickerlibrary/src/test/java/tudie/com/photopickerlibrary/ExampleUnitTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PhotoPickerView/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tudie/photopickerview/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tudie/photopickerview/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photopickerlibrary/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/photopickerlibrary/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/Folder.java" beforeDir="false" afterPath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/Folder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/FolderAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/FolderAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/Image.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/PhotoPickerActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/PhotoPickerActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/PictureAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/PictureAdapter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,6 +43,9 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$/app">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -131,12 +53,37 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="PhotoPickerView" type="f1a62948:ProjectNode" />
               </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="PhotoPickerView" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="PhotoPickerView" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="PhotoPickerView" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
             </expand>
             <select />
           </tree_state>
         </projects_view>
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -152,17 +99,21 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/ScopedStorageDemo-master" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.tudie.photopickerview" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\Github\PhotoPickerView\PhotoPickerView\photopickerlibrary\src\main\res\values" />
       <recent name="F:\Github\PhotoPickerView\PhotoPickerView\photopickerlibrary\src\main\res" />
       <recent name="F:\Github\PhotoPickerView\PhotoPickerView\app\src\main\res" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Android App.PhotoPickerView-app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -221,6 +172,30 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PhotoPickerView:app [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/app" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.PhotoPickerView:app [clean]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -236,29 +211,45 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="887" y="152" key="#PhotoPickerView-app" timestamp="1604645060268">
+    <state x="887" y="152" key="#PhotoPickerView-app" timestamp="1606881158294">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="887" y="152" key="#PhotoPickerView-app/0.0.1920.1040@0.0.1920.1040" timestamp="1604645060268" />
-    <state width="1416" height="189" key="GridCell.Tab.0.bottom" timestamp="1606550548833">
+    <state x="887" y="152" key="#PhotoPickerView-app/0.0.1920.1040@0.0.1920.1040" timestamp="1606881158294" />
+    <state x="867" y="261" key="#com.intellij.ide.util.MemberChooser" timestamp="1606822026300">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1416" height="189" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606550548833" />
-    <state width="1416" height="189" key="GridCell.Tab.0.center" timestamp="1606550548832">
+    <state x="867" y="261" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1606822026300" />
+    <state x="842" y="300" key="FileChooserDialogImpl" timestamp="1606821603441">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1416" height="189" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606550548832" />
-    <state width="1416" height="189" key="GridCell.Tab.0.left" timestamp="1606550548832">
+    <state x="842" y="300" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606821603441" />
+    <state width="1551" height="188" key="GridCell.Tab.0.bottom" timestamp="1606894036832">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1416" height="189" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606550548832" />
-    <state width="1416" height="189" key="GridCell.Tab.0.right" timestamp="1606550548833">
+    <state width="1551" height="188" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606894036832" />
+    <state width="1551" height="188" key="GridCell.Tab.0.center" timestamp="1606894036832">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1416" height="189" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606550548833" />
-    <state x="635" y="271" width="668" height="532" key="find.popup" timestamp="1606550187161">
+    <state width="1551" height="188" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606894036832" />
+    <state width="1551" height="188" key="GridCell.Tab.0.left" timestamp="1606894036832">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="635" y="271" width="668" height="532" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606550187161" />
+    <state width="1551" height="188" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606894036832" />
+    <state width="1551" height="188" key="GridCell.Tab.0.right" timestamp="1606894036832">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1551" height="188" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606894036832" />
+    <state x="629" y="163" key="SettingsEditor" timestamp="1606894077185">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="629" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1606894077185" />
+    <state x="635" y="271" width="668" height="532" key="find.popup" timestamp="1606893977554">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="635" y="271" width="668" height="532" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606893977554" />
+    <state x="514" y="233" key="run.anything.popup" timestamp="1606880831016">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="514" y="233" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606880831016" />
   </component>
 </project>

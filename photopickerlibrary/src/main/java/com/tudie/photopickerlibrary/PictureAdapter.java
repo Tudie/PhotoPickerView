@@ -2,6 +2,7 @@ package com.tudie.photopickerlibrary;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,7 +99,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
 //                    RequestOptions options = new RequestOptions()
 //                            .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
 //                    Glide.with(holder.image.getContext()).load(mImages.get(position - 1).path).thumbnail(0.01f).apply(options).into(holder.image);
-                    Glideurl(holder.image, mImages.get(position-1).path);
+                    Glideurl(holder.image, data.uri);
                 } catch (Exception e) {
                 }
 
@@ -143,7 +144,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
                 RequestOptions options = new RequestOptions()
                         .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
 //               Glide.with(holder.image.getContext()).load(mImages.get(position).path).thumbnail(0.01f).apply(options).into(holder.image);
-                Glideurl(holder.image, mImages.get(position).path);
+                Glideurl(holder.image, data.uri);
             } catch (Exception e) {
             }
 
@@ -203,7 +204,6 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
         List<Image> imagess = new ArrayList<>();
         if (images != null && images.size() > 0) {
             for (int i = 0; i < images.size(); i++) {
-                if (getFileSize(new File(images.get(i).path)) > 10)
                     imagess.add(images.get(i));
             }
             mImages = imagess;
@@ -211,27 +211,6 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
             mImages.clear();
         }
         notifyDataSetChanged();
-    }
-
-    /**
-     * 获取指定文件大小
-     *
-     * @param
-     * @return
-     * @throws Exception
-     */
-    private long getFileSize(File file) {
-        long size = 0;
-        if (file.exists()) {
-            try {
-                FileInputStream fis = null;
-                fis = new FileInputStream(file);
-                size = fis.available();
-            } catch (Exception e) {
-            }
-
-        }
-        return size;
     }
 
     /**
@@ -265,7 +244,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
     public ArrayList<String> GetSelectPath() {
         ArrayList<String> mselectpath = new ArrayList<>();
         for (int i = 0; i < mSelectedImages.size(); i++) {
-            mselectpath.add(mSelectedImages.get(i).path);
+            mselectpath.add(mSelectedImages.get(i).uri.toString());
         }
         return mselectpath;
     }

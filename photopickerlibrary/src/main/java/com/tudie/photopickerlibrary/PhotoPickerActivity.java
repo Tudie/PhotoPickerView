@@ -1,12 +1,15 @@
 package com.tudie.photopickerlibrary;
 
+import android.content.ContentUris;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.BaseColumns;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -44,11 +47,10 @@ public class PhotoPickerActivity extends AppCompatActivity {
     public static final String Extra_Code_Type = "reqeuse_code";
     public static final String Select_Count_Type = "max_select_count";
     public static final String Select_Count_CAMERA = "show_camera";
-    public static final String Select_Video_Type= "show_video";
+    public static final String Select_Video_Type = "show_video";
     public static final String PicList = "listpicdata";
     private int DefaultPicNumber = 1;//默认最大照片数量
     private boolean IsShowCamera = true;//是否显示相机
-    private int Extra_Code = 127;//相册请求状态码
     public static final int Extra_Scan = 99;//预览请求状态码
 
     private ArrayList<String> resultList = new ArrayList<>(); // 结果数据
@@ -77,7 +79,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
                     | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
@@ -159,9 +161,6 @@ public class PhotoPickerActivity extends AppCompatActivity {
             }
             if (bundle.containsKey(Select_Count_CAMERA)) {
                 IsShowCamera = bundle.getBoolean(Select_Count_CAMERA);
-            }
-            if (bundle.containsKey(Extra_Code_Type)) {
-                Extra_Code = bundle.getInt(Extra_Code_Type);
             }
             if (bundle.containsKey(Select_Video_Type)) {
                 isVideo = bundle.getBoolean(Select_Video_Type);
@@ -281,8 +280,8 @@ public class PhotoPickerActivity extends AppCompatActivity {
             } else {
                 if (id == LOADER_ALL) {
                     CursorLoader cursorLoader = new CursorLoader(PhotoPickerActivity.this,
-                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI, IMAGE_PROJECTION,
-                            selectionArgs.toString(), null, IMAGE_PROJECTION[2] + " DESC");
+                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null,
+                            selectionArgs.toString(), null, MediaStore.MediaColumns.DATE_ADDED + " DESC");
                     return cursorLoader;
                 } else if (id == LOADER_CATEGORY) {
                     String selectionStr = selectionArgs.toString();
@@ -292,7 +291,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
                     CursorLoader cursorLoader = new CursorLoader(PhotoPickerActivity.this,
                             MediaStore.Images.Media.EXTERNAL_CONTENT_URI, IMAGE_PROJECTION,
                             IMAGE_PROJECTION[0] + " like '%" + args.getString("path") + "%'" + selectionStr, null,
-                            IMAGE_PROJECTION[2] + " DESC");
+                            MediaStore.MediaColumns.DATE_ADDED + " DESC");
                     return cursorLoader;
                 }
             }
@@ -306,23 +305,30 @@ public class PhotoPickerActivity extends AppCompatActivity {
             if (data != null) {
                 List<Image> images = new ArrayList<>();
                 int count = data.getCount();
+
                 if (count > 0) {
                     data.moveToFirst();
                     do {
+                        Uri uri = null;
                         String path = "";
                         String name = "";
                         long dateTime = 0;
                         if (isVideo) {
+                            uri = ContentUris.withAppendedId(MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
+                                    data.getLong(data.getColumnIndex(BaseColumns._ID)));
                             path = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[0]));
                             name = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[1]));
                             dateTime = data.getLong(data.getColumnIndexOrThrow(IMAGE_PROJECTION[2]));
                         } else {
+
+                            uri = ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                                    data.getLong(data.getColumnIndex(BaseColumns._ID)));
                             path = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[0]));
                             name = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[1]));
                             dateTime = data.getLong(data.getColumnIndexOrThrow(IMAGE_PROJECTION[2]));
                         }
 
-                        Image image = new Image(path, name, dateTime);
+                        Image image = new Image(uri, path, name, dateTime);
                         images.add(image);
                         if (!hasFolderGened) {
                             // 获取文件夹名称
@@ -339,11 +345,11 @@ public class PhotoPickerActivity extends AppCompatActivity {
                             folder.cover = image;
                             if (!mResultFolder.contains(folder)) {
                                 List<Image> imageList = new ArrayList<>();
-                                if (getFileSize(imageFile) > 10) {
+//                                if (getFileSize(imageFile) > 10) {
                                     imageList.add(image);
                                     folder.images = imageList;
                                     mResultFolder.add(folder);
-                                }
+//                                }
 
                             } else {
                                 // 更新
@@ -461,7 +467,6 @@ public class PhotoPickerActivity extends AppCompatActivity {
         int cols = getNumColnums();
         int screenWidth = getResources().getDisplayMetrics().widthPixels;
         int columnSpace = getResources().getDimensionPixelOffset(R.dimen.space_size);
-        Log.i(">>>>>>>>columnSpace", ">>>>>>>>columnSpace" + columnSpace);
         return (screenWidth - columnSpace * (cols - 1)) / cols;
     }
 

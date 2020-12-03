@@ -1,5 +1,7 @@
 package com.tudie.photopickerlibrary;
 
+import android.net.Uri;
+
 import java.util.List;
 
 /**
@@ -7,6 +9,8 @@ import java.util.List;
  * Created by Nereo on 2015/4/7.
  */
 public class Folder {
+
+    public Uri uri;
     public String name;
     public String path;
     public Image cover;
@@ -28,7 +32,7 @@ public class Folder {
         try {
             Folder other = (Folder) o;
             return this.path.equalsIgnoreCase(other.path);
-        }catch (ClassCastException e){
+        } catch (ClassCastException e) {
             e.printStackTrace();
         }
         return super.equals(o);
