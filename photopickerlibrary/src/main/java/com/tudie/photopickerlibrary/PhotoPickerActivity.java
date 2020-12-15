@@ -48,6 +48,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
     public static final String Select_Count_Type = "max_select_count";
     public static final String Select_Count_CAMERA = "show_camera";
     public static final String Select_Video_Type = "show_video";
+    public static final String RESULT_URI = "uri";
     public static final String PicList = "listpicdata";
     public static final String Picindex = "listpicindex";
     private int DefaultPicNumber = 1;//默认最大照片数量
@@ -69,6 +70,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
 
     private boolean hasFolderGened = false;
     public boolean isVideo = false;
+    public boolean isuripath = false;
     private ImageCaptureManager captureManager;
 
     private View mPopupAnchorView;
@@ -166,11 +168,14 @@ public class PhotoPickerActivity extends AppCompatActivity {
             if (bundle.containsKey(Select_Video_Type)) {
                 isVideo = bundle.getBoolean(Select_Video_Type);
             }
+            if (bundle.containsKey(RESULT_URI)) {
+                isuripath = bundle.getBoolean(RESULT_URI);
+            }
         }
     }
 
     private void initRecyclerView() {
-        adapter = new PictureAdapter(PhotoPickerActivity.this, isVideo, getItemImageWidth(), IsShowCamera, DefaultPicNumber, captureManager, new PictureAdapter.CallBack() {
+        adapter = new PictureAdapter(PhotoPickerActivity.this, isVideo,isuripath, getItemImageWidth(), IsShowCamera, DefaultPicNumber, captureManager, new PictureAdapter.CallBack() {
             @Override
             public void values(int selectnumber) {
                 refreshActionStatus(selectnumber);

@@ -41,10 +41,12 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
     private List<Image> mSelectedImages = new ArrayList<>();
     private CallBack callBack;
     private boolean isVideo;
+    public boolean isuripath = false;
 
-    public PictureAdapter(Activity mContext,boolean isVideo ,int whith, boolean IsShowCamera, int count, ImageCaptureManager captureManager, CallBack callBack) {
+    public PictureAdapter(Activity mContext,boolean isVideo,boolean isuripath ,int whith, boolean IsShowCamera, int count, ImageCaptureManager captureManager, CallBack callBack) {
         this.mContext = mContext;
         this.isVideo = isVideo;
+        this.isuripath = isuripath;
         this.itemSize = whith;
         this.IsShowCamera = IsShowCamera;
         this.count = count;
@@ -55,10 +57,6 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_picture, parent, false);
-        //动态设置ImageView的宽高，根据自己每行item数量计算
-        //dm.widthPixels-dip2px(20)即屏幕宽度-左右10dp+10dp=20dp再转换为px的宽度，最后/3得到每个item的宽高
-//        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams((DeviceUtils.getScrnWidthDp(activity)) , DeviceUtils.getScrnHeightDp(activity));
-//        view.setLayoutParams(lp);
         return new PictureAdapter.RecyclerViewHolder(view);
     }
 
@@ -96,10 +94,12 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
                 }
                 // 显示图片
                 try {
-//                    RequestOptions options = new RequestOptions()
-//                            .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
-//                    Glide.with(holder.image.getContext()).load(mImages.get(position - 1).path).thumbnail(0.01f).apply(options).into(holder.image);
-                    Glideurl(holder.image, data.uri);
+                    if (isuripath){
+                        Glideurl(holder.image, data.uri);
+                    }else {
+                        Glideurl(holder.image, data.path);
+                    }
+
                 } catch (Exception e) {
                 }
 
@@ -141,10 +141,11 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
             }
             // 显示图片
             try {
-                RequestOptions options = new RequestOptions()
-                        .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
-//               Glide.with(holder.image.getContext()).load(mImages.get(position).path).thumbnail(0.01f).apply(options).into(holder.image);
-                Glideurl(holder.image, data.uri);
+                if (isuripath){
+                    Glideurl(holder.image, data.uri);
+                }else {
+                    Glideurl(holder.image, data.path);
+                }
             } catch (Exception e) {
             }
 
@@ -249,7 +250,12 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.Recycler
     public ArrayList<String> GetSelectPath() {
         ArrayList<String> mselectpath = new ArrayList<>();
         for (int i = 0; i < mSelectedImages.size(); i++) {
-            mselectpath.add(mSelectedImages.get(i).uri.toString());
+            if (isuripath){
+                mselectpath.add(mSelectedImages.get(i).uri.toString());
+            }else {
+                mselectpath.add(mSelectedImages.get(i).path);
+            }
+
         }
         return mselectpath;
     }

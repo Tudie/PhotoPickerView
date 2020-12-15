@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     private List<String> permissions = new ArrayList<>();
     private boolean isvideo = false;
+    private boolean isuri = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,11 +61,26 @@ public class MainActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_main);
 
+        findViewById(R.id.texturi).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isvideo = false;
+                isuri = true;
+                if (permissions.size() < 1) {
+                    //权限
+                    permissions.add(Manifest.permission.CAMERA);
+                    permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                    permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
 
+                }
+                getPersimmionss(permissions);
+            }
+        });
         findViewById(R.id.text).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 isvideo = false;
+                isuri = false;
                 if (permissions.size() < 1) {
                     //权限
                     permissions.add(Manifest.permission.CAMERA);
@@ -79,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 isvideo = true;
+                isuri = false;
                 if (permissions.size() < 1) {
                     //权限
                     permissions.add(Manifest.permission.CAMERA);
@@ -92,13 +109,13 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.scanpaths).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ArrayList<String> list=new ArrayList<>();
-                Bundle bundle=new Bundle();
+                ArrayList<String> list = new ArrayList<>();
+                Bundle bundle = new Bundle();
                 list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1608009879524&di=0e581c7cbfc06024446f5efe67a01e6c&imgtype=0&src=http%3A%2F%2Fa4.att.hudong.com%2F27%2F67%2F01300000921826141299672233506.jpg");
                 list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1608009879524&di=79bd407783c30c093e1d3be03f654fe9&imgtype=0&src=http%3A%2F%2Fa2.att.hudong.com%2F42%2F31%2F01300001320894132989315766618.jpg");
                 list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1608009879524&di=ff8c7fb0a224b61167e189d5a929b2a0&imgtype=0&src=http%3A%2F%2Fa3.att.hudong.com%2F55%2F22%2F20300000929429130630222900050.jpg");
-                bundle.putStringArrayList(PhotoPickerActivity.PicList,list);
-                bundle.putInt(PhotoPickerActivity.Picindex,0);
+                bundle.putStringArrayList(PhotoPickerActivity.PicList, list);
+                bundle.putInt(PhotoPickerActivity.Picindex, 0);
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this, ScanPictureActivity.class);
                 intent.putExtras(bundle);
@@ -143,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(PhotoPickerActivity.Select_Count_CAMERA, true);//是否需要照相机 可以不传默认需要
         intent.putExtra(PhotoPickerActivity.Select_Count_Type, 5);//获取几张图片  可以不传默认一张
         intent.putExtra(PhotoPickerActivity.Select_Video_Type, isvideo);//图片还是视频
+        intent.putExtra(PhotoPickerActivity.RESULT_URI, isuri);
         startActivityForResult(intent, 127);
 
 
@@ -195,8 +213,13 @@ public class MainActivity extends AppCompatActivity {
 //                    }catch (Exception e){}
 //                    String filePath= SiliCompressor.with(this).compress(paths.get(0), destinationDirectory);
 //                    ((ImageView) findViewById(R.id.ma_pic_iv)).setImageBitmap(getimage(Uri.parse(paths.get(0))));
-                    Glideurl((ImageView) findViewById(R.id.ma_pic_iv), getimage(Uri.parse(paths.get(0))));
 //                    saveBitmapFile(getimage(Uri.parse(paths.get(0))),0);
+                    if (isuri){
+                        Glideurl((ImageView) findViewById(R.id.ma_pic_iv), getimage(Uri.parse(paths.get(0))));
+                    }else {
+                        Glideurl((ImageView) findViewById(R.id.ma_picpath_iv), getimagepath(paths.get(0)));
+
+                    }
                     break;
 
 
@@ -222,6 +245,20 @@ public class MainActivity extends AppCompatActivity {
         return compressImage(bitmap, 0);// 压缩好比例大小后再进行质量压缩
     }
 
+    /**
+     * 图片按比例大小压缩方法
+     *
+     * @param srcPath （根据路径获取图片并压缩）
+     * @return
+     */
+    public Bitmap getimagepath(String srcPath) {
+        BitmapFactory.Options newOpts = Options();
+        Bitmap bitmap = BitmapFactory.decodeFile(srcPath, newOpts);// 此时返回bm为空
+        // 重新读入图片，注意此时已经把options.inJustDecodeBounds 设回false了
+        bitmap = BitmapFactory.decodeFile(srcPath, newOpts);
+        return compressImage(bitmap, 0);// 压缩好比例大小后再进行质量压缩
+    }
+
 
     public Bitmap compressImage(Bitmap image, int be) {
 
@@ -234,7 +271,7 @@ public class MainActivity extends AppCompatActivity {
         image.compress(Bitmap.CompressFormat.JPEG, options, baos);// 质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
 
         while (baos.toByteArray().length / 1024 > 300) { // 循环判断如果压缩后图片是否大于100kb,大于继续压缩
-           Log.i(">>>>>>>>>>  ",">>>>>>>>>>>  "+baos.toByteArray().length);
+            Log.i(">>>>>>>>>>  ", ">>>>>>>>>>>  " + baos.toByteArray().length);
             baos.reset(); // 重置baos即清空baos
             image.compress(Bitmap.CompressFormat.JPEG, options, baos);// 这里压缩options%，把压缩后的数据存放到baos中
             options -= 10;// 每次都减少10

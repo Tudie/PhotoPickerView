@@ -14,14 +14,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9385ed8a-27ac-49c0-ac1c-32eb2b7ded3b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tudie/photopickerview/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tudie/photopickerview/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/PhotoPickerActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/PhotoPickerActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/scanpicture/ScanPictureActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/scanpicture/ScanPictureActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photopickerlibrary/src/main/res/layout/act_scanpicture.xml" beforeDir="false" afterPath="$PROJECT_DIR$/photopickerlibrary/src/main/res/layout/act_scanpicture.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/PictureAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/PictureAdapter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,22 +214,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="842" y="300" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606821603441" />
-    <state width="1551" height="188" key="GridCell.Tab.0.bottom" timestamp="1606894036832">
+    <state width="1551" height="12" key="GridCell.Tab.0.bottom" timestamp="1608001484730">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1551" height="188" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606894036832" />
-    <state width="1551" height="188" key="GridCell.Tab.0.center" timestamp="1606894036832">
+    <state width="1551" height="12" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608001484730" />
+    <state width="1551" height="12" key="GridCell.Tab.0.center" timestamp="1608001484729">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1551" height="188" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606894036832" />
-    <state width="1551" height="188" key="GridCell.Tab.0.left" timestamp="1606894036832">
+    <state width="1551" height="12" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608001484729" />
+    <state width="1551" height="12" key="GridCell.Tab.0.left" timestamp="1608001484729">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1551" height="188" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606894036832" />
-    <state width="1551" height="188" key="GridCell.Tab.0.right" timestamp="1606894036832">
+    <state width="1551" height="12" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608001484729" />
+    <state width="1551" height="12" key="GridCell.Tab.0.right" timestamp="1608001484729">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1551" height="188" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606894036832" />
+    <state width="1551" height="12" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608001484729" />
     <state x="629" y="163" key="SettingsEditor" timestamp="1606894077185">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
