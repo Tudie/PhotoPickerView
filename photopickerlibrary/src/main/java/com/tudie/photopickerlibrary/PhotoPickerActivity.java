@@ -412,10 +412,18 @@ public class PhotoPickerActivity extends AppCompatActivity {
             switch (requestCode) {
                 // 相机拍照完成后，返回图片路径
                 case ImageCaptureManager.REQUEST_TAKE_PHOTO:
-                    if (captureManager.getCurrentPhotoPath() != null) {
-                        captureManager.galleryAddPic();
-                        resultList.add(captureManager.getCurrentPhotoPath());
+                    if (isuripath){
+                        if (captureManager.getmCurrentPhotoUri() != null) {
+                            captureManager.galleryAddPic();
+                            resultList.add(captureManager.getmCurrentPhotoUri().toString());
+                        }
+                    }else {
+                        if (captureManager.getCurrentPhotoPath() != null) {
+                            captureManager.galleryAddPic();
+                            resultList.add(captureManager.getCurrentPhotoPath());
+                        }
                     }
+
                     complete();
                     break;
                 // 预览照片

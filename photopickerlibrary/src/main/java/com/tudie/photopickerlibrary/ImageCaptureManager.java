@@ -14,17 +14,13 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by donglua on 15/6/23.
- * <p/>
- * <p/>
- * http://developer.android.com/training/camera/photobasics.html
- */
+
 public class ImageCaptureManager {
 
     private final static String CAPTURED_PHOTO_PATH_KEY = "mCurrentPhotoPath";
     public static final int REQUEST_TAKE_PHOTO = 1;
 
+    private Uri mCurrentPhotoUri;
     private String mCurrentPhotoPath;
     private Context mContext;
 
@@ -46,6 +42,7 @@ public class ImageCaptureManager {
         File image = new File(storageDir, imageFileName + ".jpg");
         // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = image.getAbsolutePath();
+        mCurrentPhotoUri = Uri.fromFile(image);
         return image;
     }
     private File createVideoFile() throws IOException {
@@ -62,6 +59,7 @@ public class ImageCaptureManager {
         File image = new File(storageDir, imageFileName + ".mp4");
         // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = image.getAbsolutePath();
+        mCurrentPhotoUri = Uri.fromFile(image);
         return image;
     }
 
@@ -123,15 +121,19 @@ public class ImageCaptureManager {
 
     public void galleryAddPic() {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-        File f = new File(mCurrentPhotoPath);
-        Uri contentUri = Uri.fromFile(f);
-        mediaScanIntent.setData(contentUri);
+//        File f = new File(mCurrentPhotoPath);
+//        mCurrentPhotoUri = Uri.fromFile(f);
+        mediaScanIntent.setData(mCurrentPhotoUri);
         mContext.sendBroadcast(mediaScanIntent);
     }
 
 
     public String getCurrentPhotoPath() {
         return mCurrentPhotoPath;
+    }
+
+    public Uri getmCurrentPhotoUri() {
+        return mCurrentPhotoUri;
     }
 
     public void onSaveInstanceState(Bundle savedInstanceState) {
