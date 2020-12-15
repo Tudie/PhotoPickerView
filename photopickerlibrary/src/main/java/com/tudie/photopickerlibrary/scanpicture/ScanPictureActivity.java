@@ -32,6 +32,7 @@ import java.util.List;
 public class ScanPictureActivity extends AppCompatActivity {
 
     private static ArrayList<String> paths;
+    private int index=0;
     private static Activity activity;
 
     public static Activity getActivity() {
@@ -49,11 +50,17 @@ public class ScanPictureActivity extends AppCompatActivity {
 
         setContentView(R.layout.act_scanpicture);
         paths = getIntent().getStringArrayListExtra(PhotoPickerActivity.PicList);
+        try {
+            index = getIntent().getIntExtra(PhotoPickerActivity.Picindex,0);
+        }catch (Exception e){
+
+        }
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
         if (Length(paths) < 1) {
             return;
         }
         viewPager.setAdapter(new SamplePagerAdapter());
+        viewPager.setCurrentItem(index);
     }
 
     static class SamplePagerAdapter extends PagerAdapter {

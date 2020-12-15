@@ -49,6 +49,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
     public static final String Select_Count_CAMERA = "show_camera";
     public static final String Select_Video_Type = "show_video";
     public static final String PicList = "listpicdata";
+    public static final String Picindex = "listpicindex";
     private int DefaultPicNumber = 1;//默认最大照片数量
     private boolean IsShowCamera = true;//是否显示相机
     public static final int Extra_Scan = 99;//预览请求状态码
@@ -245,10 +246,10 @@ public class PhotoPickerActivity extends AppCompatActivity {
     private LoaderManager.LoaderCallbacks<Cursor> mLoaderCallback = new LoaderManager.LoaderCallbacks<Cursor>() {
 
         private final String[] IMAGE_PROJECTION = {
-                MediaStore.Images.Media.DATA,
-                MediaStore.Images.Media.DISPLAY_NAME,
-                MediaStore.Images.Media.DATE_ADDED,
-                MediaStore.Images.Media._ID};
+                MediaStore.Files.FileColumns.DATA,
+                MediaStore.Files.FileColumns.DISPLAY_NAME,
+                MediaStore.Files.FileColumns.DATE_ADDED,
+                MediaStore.Files.FileColumns._ID};
         private final String[] IMAGE_PROJECTION_Video = {
                 MediaStore.Video.Media.DATA,
                 MediaStore.Video.Media.DISPLAY_NAME,
@@ -257,6 +258,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
 
         @Override
         public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+
 
             // 根据图片设置参数新增验证条件
             StringBuilder selectionArgs = new StringBuilder();
@@ -280,7 +282,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
             } else {
                 if (id == LOADER_ALL) {
                     CursorLoader cursorLoader = new CursorLoader(PhotoPickerActivity.this,
-                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null,
+                            MediaStore.Images.Media.getContentUri("external"), null,
                             selectionArgs.toString(), null, MediaStore.MediaColumns.DATE_ADDED + " DESC");
                     return cursorLoader;
                 } else if (id == LOADER_CATEGORY) {
@@ -345,11 +347,11 @@ public class PhotoPickerActivity extends AppCompatActivity {
                             folder.cover = image;
                             if (!mResultFolder.contains(folder)) {
                                 List<Image> imageList = new ArrayList<>();
-//                                if (getFileSize(imageFile) > 10) {
+                                if (getFileSize(imageFile) > 10) {
                                     imageList.add(image);
                                     folder.images = imageList;
                                     mResultFolder.add(folder);
-//                                }
+                                }
 
                             } else {
                                 // 更新

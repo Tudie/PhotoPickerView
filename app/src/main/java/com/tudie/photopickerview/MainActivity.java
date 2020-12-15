@@ -24,6 +24,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.iceteck.silicompressorr.SiliCompressor;
 import com.tudie.photopickerlibrary.PhotoPickerActivity;
+import com.tudie.photopickerlibrary.scanpicture.ScanPictureActivity;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
@@ -88,7 +89,22 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
+        findViewById(R.id.scanpaths).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<String> list=new ArrayList<>();
+                Bundle bundle=new Bundle();
+                list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1608009879524&di=0e581c7cbfc06024446f5efe67a01e6c&imgtype=0&src=http%3A%2F%2Fa4.att.hudong.com%2F27%2F67%2F01300000921826141299672233506.jpg");
+                list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1608009879524&di=79bd407783c30c093e1d3be03f654fe9&imgtype=0&src=http%3A%2F%2Fa2.att.hudong.com%2F42%2F31%2F01300001320894132989315766618.jpg");
+                list.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1608009879524&di=ff8c7fb0a224b61167e189d5a929b2a0&imgtype=0&src=http%3A%2F%2Fa3.att.hudong.com%2F55%2F22%2F20300000929429130630222900050.jpg");
+                bundle.putStringArrayList(PhotoPickerActivity.PicList,list);
+                bundle.putInt(PhotoPickerActivity.Picindex,0);
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, ScanPictureActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
     }
 
     public File saveBitmapFile(Bitmap bitmap, int index) {
