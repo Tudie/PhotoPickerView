@@ -8,14 +8,15 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="&gt;" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="&gt;&gt;&gt;&gt;" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="info" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9385ed8a-27ac-49c0-ac1c-32eb2b7ded3b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/ImageCaptureManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/ImageCaptureManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/tudie/photopickerview/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/tudie/photopickerview/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/PhotoPickerActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/photopickerlibrary/src/main/java/com/tudie/photopickerlibrary/PhotoPickerActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -212,30 +213,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="842" y="300" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606821603441" />
-    <state width="1551" height="55" key="GridCell.Tab.0.bottom" timestamp="1608003038252">
+    <state width="1551" height="-41" key="GridCell.Tab.0.bottom" timestamp="1608638665949">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1551" height="55" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608003038252" />
-    <state width="1551" height="55" key="GridCell.Tab.0.center" timestamp="1608003038252">
+    <state width="1551" height="-41" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608638665949" />
+    <state width="1551" height="-41" key="GridCell.Tab.0.center" timestamp="1608638665949">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1551" height="55" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608003038252" />
-    <state width="1551" height="55" key="GridCell.Tab.0.left" timestamp="1608003038252">
+    <state width="1551" height="-41" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608638665949" />
+    <state width="1551" height="-41" key="GridCell.Tab.0.left" timestamp="1608638665949">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1551" height="55" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608003038252" />
-    <state width="1551" height="55" key="GridCell.Tab.0.right" timestamp="1608003038252">
+    <state width="1551" height="-41" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608638665949" />
+    <state width="1551" height="-41" key="GridCell.Tab.0.right" timestamp="1608638665949">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1551" height="55" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608003038252" />
+    <state width="1551" height="-41" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608638665949" />
     <state x="629" y="163" key="SettingsEditor" timestamp="1606894077185">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="629" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1606894077185" />
-    <state x="635" y="271" width="668" height="532" key="find.popup" timestamp="1606893977554">
+    <state x="635" y="271" width="668" height="532" key="find.popup" timestamp="1608638851413">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="635" y="271" width="668" height="532" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606893977554" />
+    <state x="635" y="271" width="668" height="532" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1608638851413" />
     <state x="514" y="233" key="run.anything.popup" timestamp="1606880831016">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

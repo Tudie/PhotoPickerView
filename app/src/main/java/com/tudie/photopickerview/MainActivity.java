@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 isvideo = true;
-                isuri = false;
+                isuri = true;
                 if (permissions.size() < 1) {
                     //权限
                     permissions.add(Manifest.permission.CAMERA);

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.BaseColumns;
 import android.provider.MediaStore;
+import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -175,7 +176,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
     }
 
     private void initRecyclerView() {
-        adapter = new PictureAdapter(PhotoPickerActivity.this, isVideo,isuripath, getItemImageWidth(), IsShowCamera, DefaultPicNumber, captureManager, new PictureAdapter.CallBack() {
+        adapter = new PictureAdapter(PhotoPickerActivity.this, isVideo, isuripath, getItemImageWidth(), IsShowCamera, DefaultPicNumber, captureManager, new PictureAdapter.CallBack() {
             @Override
             public void values(int selectnumber) {
                 refreshActionStatus(selectnumber);
@@ -254,12 +255,14 @@ public class PhotoPickerActivity extends AppCompatActivity {
                 MediaStore.Files.FileColumns.DATA,
                 MediaStore.Files.FileColumns.DISPLAY_NAME,
                 MediaStore.Files.FileColumns.DATE_ADDED,
-                MediaStore.Files.FileColumns._ID};
+                MediaStore.Files.FileColumns._ID,
+                MediaStore.Files.FileColumns.SIZE};
         private final String[] IMAGE_PROJECTION_Video = {
                 MediaStore.Video.Media.DATA,
                 MediaStore.Video.Media.DISPLAY_NAME,
                 MediaStore.Video.Media.DATE_ADDED,
-                MediaStore.Video.Media._ID};
+                MediaStore.Video.Media._ID,
+                MediaStore.Video.Media.SIZE};
 
         @Override
         public Loader<Cursor> onCreateLoader(int id, Bundle args) {
@@ -320,12 +323,14 @@ public class PhotoPickerActivity extends AppCompatActivity {
                         String path = "";
                         String name = "";
                         long dateTime = 0;
+                        long size = 0;
                         if (isVideo) {
                             uri = ContentUris.withAppendedId(MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
                                     data.getLong(data.getColumnIndex(BaseColumns._ID)));
-                            path = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[0]));
-                            name = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[1]));
-                            dateTime = data.getLong(data.getColumnIndexOrThrow(IMAGE_PROJECTION[2]));
+                            path = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION_Video[0]));
+                            name = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION_Video[1]));
+                            dateTime = data.getLong(data.getColumnIndexOrThrow(IMAGE_PROJECTION_Video[2]));
+                            size =data.getLong( data.getColumnIndex(IMAGE_PROJECTION_Video[4]));
                         } else {
 
                             uri = ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
@@ -333,37 +338,40 @@ public class PhotoPickerActivity extends AppCompatActivity {
                             path = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[0]));
                             name = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[1]));
                             dateTime = data.getLong(data.getColumnIndexOrThrow(IMAGE_PROJECTION[2]));
+                            size =data.getLong( data.getColumnIndex(IMAGE_PROJECTION[4]));
+
                         }
-
                         Image image = new Image(uri, path, name, dateTime);
-                        images.add(image);
-                        if (!hasFolderGened) {
-                            // 获取文件夹名称
-                            File imageFile = new File(path);
-                            File folderFile = imageFile.getParentFile();
-                            Folder folder = new Folder();
-                            try {
-                                folder.name = folderFile.getName();
-                            } catch (Exception e) {
-                                folder.name = "Pic";
-                            }
+                        if (size> 2097152) {//文件需大于2Kb
+                            images.add(image);
+                            if (!hasFolderGened) {
+                                // 获取文件夹名称
+                                File imageFile = new File(path);
+                                File folderFile = imageFile.getParentFile();
+                                Folder folder = new Folder();
+                                try {
+                                    folder.name = folderFile.getName();
+                                } catch (Exception e) {
+                                    folder.name = "Pic";
+                                }
 
-                            folder.path = folderFile.getAbsolutePath();
-                            folder.cover = image;
-                            if (!mResultFolder.contains(folder)) {
-                                List<Image> imageList = new ArrayList<>();
-                                if (getFileSize(imageFile) > 10) {
+                                folder.path = folderFile.getAbsolutePath();
+                                folder.cover = image;
+                                if (!mResultFolder.contains(folder)) {
+                                    List<Image> imageList = new ArrayList<>();
                                     imageList.add(image);
                                     folder.images = imageList;
                                     mResultFolder.add(folder);
-                                }
 
-                            } else {
-                                // 更新
-                                Folder f = mResultFolder.get(mResultFolder.indexOf(folder));
-                                f.images.add(image);
+                                } else {
+                                    // 更新
+                                    Folder f = mResultFolder.get(mResultFolder.indexOf(folder));
+                                    f.images.add(image);
+                                }
                             }
                         }
+
+
 
                     } while (data.moveToNext());
 
@@ -412,12 +420,12 @@ public class PhotoPickerActivity extends AppCompatActivity {
             switch (requestCode) {
                 // 相机拍照完成后，返回图片路径
                 case ImageCaptureManager.REQUEST_TAKE_PHOTO:
-                    if (isuripath){
+                    if (isuripath) {
                         if (captureManager.getmCurrentPhotoUri() != null) {
                             captureManager.galleryAddPic();
                             resultList.add(captureManager.getmCurrentPhotoUri().toString());
                         }
-                    }else {
+                    } else {
                         if (captureManager.getCurrentPhotoPath() != null) {
                             captureManager.galleryAddPic();
                             resultList.add(captureManager.getCurrentPhotoPath());
